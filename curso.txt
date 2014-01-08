@@ -1,0 +1,144 @@
+getbutton:reconoce pulsaciones
+
+
+Sistemas de particulas:
+
+
+3canal alfa: determina la transparencia, mas baja, mas tranparente
+
+siempre q no ponga el objeto x delante hago referencia a this
+
+
+control de versiones
+alienbrade
+subversion
+
+
+flechitaCreada.transform.Rotate(Vector3.left*90);// rota el RigidBody flechita sobre el eje Z
+
+Vector3.forward	 (0, 0, 1)           =Vector3(0,0,1);
+Vector3.up	 (0, 1, 0)
+Vector3.right	 (1, 0, 0)
+
+Debug.Log(hitPoints);// muestra los puntos de vida
+
+
+Quaternion rotaLaFlecha;
+rotaLaFlecha=transform.rotation;
+rotaLaFlecha.x=1;                     //hace q el cuaternion este rotado en el eje x 90°
+			
+
+
+para cambiar la fuente, crear una carpeta llamada fonts y poner alli la fuente nueva
+
+debug.break:breakea recien luego d pintar el ultimo frame
+
+
+
+producto vectorial se usa para saber si algo esta dentro o fuera de un objeto, de un lado o otro
+
+
+presentacion del trabajo
+en controles.txt va los cambios q le hicimos a los controls(est archivo es opcional)
+
+
+
+
+en first person controller->Character controller->Slope Limit =dice el angulo maximo al q puede subir
+
+
+el profe usa visual estudio como editor de codigo, en vez del monoDevelop
+
+www.flaza.us/subjects/2009:4/58Game-programming
+
+------------------------------------------------------------------------------------
+
+Explicacion del deltaTime
+tiempo q tomo completar el ultimo frame? 0.5seg
+
+60fps
+
+frame1    frame2
+seg10	  seg10.016
+
+1frame dura 0.016seg
+
+		pilarAngle=pilarAngle+(Time.deltaTime*50f);
+		pilarAngle=pilarAngle+(0.016*50f);		->pilarAngle se incrementara 0.8333 grados por frame
+								->	     se incrementara 0.8333*60=49.999° por segundo
+
+20fps
+
+1frame dura 0.05seg
+		pilarAngle=pilarAngle+(0.05*50f);		->pilarAngle se incrementara 2.5 grados por frame
+								->	     se incrementara 2.5*20=50° por segundo
+
+X lo tanto, el valor x el q multiplique Time.deltaTime va a ser	en cuanto se va a incrementar el valor en un segundo=).
+
+
+---------------------------------------------
+Desplazamientos
+
+transform.position = transform.position+(Vector3.right)*(Time.deltaTime*10f)    (va moviendo a la der este objeto)
+
+
+----------------------------------------
+Quaternions
+public Quaternion rotation = Quaternion.identity;
+
+Acceso a variables
+rotation.eulerAngles = new Vector3(20, 30, 0);          setea una rotacion de 20° en el ejeX y 30° en el ejeY
+rotation.eulerAngles.y					retorna la rotacionq tiene sobre el ejeY
+	Se permite la modificacion de un una rotacion usando una variable aux rotaaa
+		rotaaa.eulerAngles = new Vector3(20, 30, 0);
+		transform.rotation=rotaaa;
+
+
+rotaaa.ToAngleAxis(out angle, out axis);    pone en el float angle cuanto esta rotado el objeto y en axis el Vector3 sobre el cual rotado
+						
+
+Funciones estaticas:
+
+transform.rotation = Quaternion.AngleAxis(30, Vector3.forward);	         //Hace q este objeto gire 30 sobre el eje Z(adelante)
+									// se ve desde abajo del eje el angulo de giro	
+transform.rotation = Quaternion.FromToRotation(Vector3.up, Vector3.right); //Hace q este objeto, q el vector q miraba arriba, mire a la derecha
+	
+
+	public Transform target;					//hace q el eje Z del objeto siga a la posicion de target
+	void Update () {
+		Vector3 poscRel= target.position -transform.position;	
+		Quaternion rotaaa=Quaternion.LookRotation(poscRel);	//puede tener un 2do argumento q indica la posc d la cabeza
+		transform.rotation=rotaaa;				
+	}								//Las 2ras lineas del Update() se pueden resumir en:
+								 Quaternion rotaa=Quaternion.LookRotation(target.position-tranform.position);
+
+transform.rotation= Quaternion.Slerp(transform.rotation, Quaternion.AngleAxis(-90,Vector3.forward),Time.deltaTime*0.5f);
+						//tranforma la rotacion de una a otra, si aumento el deltaTime va a ser mas rapida la transicion	
+						//en vez de Slerp puedo usar Lerp q es mas rapida pero se puede ver peor
+
+-----------------------------------
+RigidBody
+
+rigidbody.AddTorque(0,0,-30);	  //añade una fuerza de torque, rota sobre el eje z, mirado desde abajo(sentido horario xq es negativo)
+
+
+
+
+
+
+
+
+--------------------------------------------
+Correccion
+en la diapo de la clase 09-11, en la descripcion de la funcion tranformDirection, deberia decir que transforma una direccion
+de coordenada local a global		
+
+
+
+ Debug.Log(direction.magnitude
+
+Hacer el menu:
+Diapo 12-11-11,pagina9
+
+
+cosas pendientes:darle animacion como se debe al medikit aaaaaaaaaa
