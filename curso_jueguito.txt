@@ -1,0 +1,20 @@
+prefabs:contenedor prefabricado
+	normament se le pone un game object preconfigurado
+
+proyectos chicos se ordenan:
+scripts
+prefabs
+materiales
+
+Inspector
+layers
+capa ogica en la q esta hubicado el objeto
+se puede agrupar cosas para q se afecten entre elos(estan en la misma capa)
+tags:faciita la forma de buscar objetos
+
+
+
+variables publicas:pueden ser modificadas x el inspector
+MonoBehaviour:clases q controlan e comportamiento d 1 objeto
+ Update () se ejecuta siempre q e objeto q este activo
+Start ()se ejecuta 1 sola vez x cada instanciacion de 1 objeto
